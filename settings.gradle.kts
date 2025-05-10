@@ -15,5 +15,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "weather"
-include(":androidApp")
+include(":composeApp")
 include(":shared")
+
