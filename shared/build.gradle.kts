@@ -71,6 +71,7 @@ kotlin {
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+
         }
         commonTest.dependencies {
 
