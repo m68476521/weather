@@ -1,4 +1,4 @@
-package com.m68476521.weather.geolocation.locals
+package com.m68476521.weather.geolocation.data.locals
 
 import androidx.room.ConstructedBy
 import androidx.room.Database

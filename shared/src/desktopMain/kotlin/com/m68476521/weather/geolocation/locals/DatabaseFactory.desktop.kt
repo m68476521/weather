@@ -2,6 +2,7 @@ package com.m68476521.weather.geolocation.locals
 
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.m68476521.weather.geolocation.data.locals.GeolocationDatabase
 import java.io.File
 
 actual class DatabaseFactory {

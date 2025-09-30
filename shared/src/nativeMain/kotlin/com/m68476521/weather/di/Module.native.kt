@@ -1,6 +1,6 @@
 package com.m68476521.weather.di
 
-import com.m68476521.weather.geolocation.locals.DatabaseFactory
+import com.m68476521.weather.geolocation.data.locals.DatabaseFactory
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.darwin.Darwin
 import org.koin.core.module.Module
