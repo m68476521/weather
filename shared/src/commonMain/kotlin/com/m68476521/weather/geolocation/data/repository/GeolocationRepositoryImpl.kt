@@ -6,7 +6,7 @@ import com.m68476521.weather.utils.ApiErrorResponse
 import com.m68476521.weather.utils.Response
 import kotlinx.coroutines.flow.Flow
 
-class GeolocationRepositoryIml() : GeoLocationRepository {
+class GeolocationRepositoryImpl() : GeoLocationRepository {
 
     override val geoLocation: Flow<GeoLocation?>
         get() = TODO("Not yet implemented")
