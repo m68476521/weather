@@ -10,21 +10,22 @@ name: CI with Gradle
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 # permissions:
 #   contents: read
 
 jobs:
   lint:
+    name: Ktlin check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
 
-      - name: Run lint 2
+      - name: Run ktlinCheck
         run: ./gradlew ktlintCheck
 
 
