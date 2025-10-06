@@ -22,7 +22,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -48,7 +48,7 @@ kotlin {
         }
 
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            // put your multiplatform dependencies here
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -72,7 +72,6 @@ kotlin {
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
-
         }
         commonTest.dependencies {
 
@@ -94,14 +93,13 @@ room {
     schemaDirectory("$projectDir/schemas")
 }
 
-dependencies{
-    add("kspDesktop",libs.androidx.room.compiler)
+dependencies {
+    add("kspDesktop", libs.androidx.room.compiler)
     add("kspAndroid", libs.androidx.room.compiler)
     add("kspIosSimulatorArm64", libs.androidx.room.compiler)
     add("kspIosX64", libs.androidx.room.compiler)
     add("kspIosArm64", libs.androidx.room.compiler)
 }
-
 
 android {
     namespace = "com.m68476521.weather"

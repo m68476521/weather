@@ -7,18 +7,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.m68476521.weather.di.initKoin
-import kotlinx.datetime.Month
 
 fun main() {
     initKoin()
     application {
         Window(
             onCloseRequest = ::exitApplication,
-            title = "Weather",
+            title = "Weather"
         ) {
-            //TODO check this
+            // TODO check this
 //        App()
-//getPlatform()
+// getPlatform()
 //        Greeting()
 //        Box(modifier = Modifier.fillMaxSize()) {
 //            Greeting()
@@ -27,7 +26,6 @@ fun main() {
         }
     }
 }
-
 
 @Composable
 fun Welcome() {

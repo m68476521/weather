@@ -19,7 +19,7 @@ fun GeoLocationDto.toDomain(): List<GeoLocation> {
             name = it.name,
             countryCode = it.countryCode,
             flagUrl = K.flagUrl(it.countryCode),
-            countryId =  it.countryId,
+            countryId = it.countryId,
             latitude = it.latitude,
             longitude = it.longitude,
             timeZone = it.timezone,
