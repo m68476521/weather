@@ -1,3 +1,6 @@
+import org.gradle.kotlin.dsl.ktlint
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
@@ -34,6 +37,34 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        debug.set(true)
+    }
+}
+
+tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+
+ktlint {
+    android = true // Enable Android-specific linting rules
+    ignoreFailures = false // Fail the build if KtLint finds any issues
+    reporters {
+        reporter(reporterType = ReporterType.PLAIN) // Output KtLint results in plain text format
+        reporter(reporterType = ReporterType.CHECKSTYLE)
+        reporter(reporterType = ReporterType.SARIF)
+        reporter(reporterType = ReporterType.HTML) // Output KtLint results in HTML format
+    }
+
+    filter {
+        exclude("**/build/generated/**")
+        exclude { element ->
+            val path = element.file.path
+            path.contains("**/shared/build/generated/**") || path.contains("**/build/**")
+        }
     }
 }
 

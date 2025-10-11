@@ -43,5 +43,5 @@ data class Result(
     @SerialName("postcodes")
     val postcodes: List<String> = listOf(),
     @SerialName("timezone")
-    val timezone: String = ""
+    val timezone: String = "",
 )

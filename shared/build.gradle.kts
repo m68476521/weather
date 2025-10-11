@@ -1,5 +1,6 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -91,6 +92,24 @@ kotlin {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+ktlint {
+    android = true // Enable Android-specific linting rules
+    ignoreFailures = false // Fail the build if KtLint finds any issues
+    reporters {
+        reporter(reporterType = ReporterType.PLAIN) // Output KtLint results in plain text format
+        reporter(reporterType = ReporterType.CHECKSTYLE)
+        reporter(reporterType = ReporterType.SARIF)
+        reporter(reporterType = ReporterType.HTML) // Output KtLint results in HTML format
+    }
+
+    filter {
+        exclude { element ->
+            val path = element.file.path
+            path.contains("/generated/") || path.contains("/build/")
+        }
+    }
 }
 
 dependencies {

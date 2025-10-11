@@ -21,27 +21,27 @@ class GeolocationRepositoryImpl(
     private val geoLocationRemoteApiService: GeoLocationRemoteApiService,
     private val geoLocationDao: GeoLocationDao,
     private val geoLocationMapper: Mapper<GeoLocation, GeoLocationEntity>,
-    private val externalScope: CoroutineScope
+    private val externalScope: CoroutineScope,
 ) : GeoLocationRepository {
-
     override val geoLocation: Flow<GeoLocation?>
         get() {
-            return geoLocationDao.geoLocation().map {
-                geoLocationMapper.mapToDomainOrNull(it)
-            }.shareIn(scope = externalScope, started = SharingStarted.Lazily)
+            return geoLocationDao
+                .geoLocation()
+                .map {
+                    geoLocationMapper.mapToDomainOrNull(it)
+                }.shareIn(scope = externalScope, started = SharingStarted.Lazily)
         }
 
     override suspend fun upsertLocation(geoLocation: GeoLocation) {
         geoLocationDao.upsertGeoLocation(geoLocationMapper.mapFromDomain(geoLocation))
     }
 
-    override fun fetchGeoLocation(query: String): Flow<Response<List<GeoLocation>, ApiErrorResponse>> {
-        return geoLocationRemoteApiService.searchLocation(query).map { response ->
+    override fun fetchGeoLocation(query: String): Flow<Response<List<GeoLocation>, ApiErrorResponse>> =
+        geoLocationRemoteApiService.searchLocation(query).map { response ->
             response.map { geoLocationDto ->
                 geoLocationDto.toDomain()
             }
         }
-    }
 
     override suspend fun clearGeoLocation() {
         geoLocationDao.clearGeoLocation()

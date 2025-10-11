@@ -13,5 +13,5 @@ data class GeoLocationEntity(
     val latitude: Double,
     val longitude: Double,
     val timeZone: String,
-    val elevation: Double
+    val elevation: Double,
 )

@@ -1,12 +1,12 @@
-
 import androidx.compose.ui.window.ComposeUIViewController
 import com.m68476521.weather.di.initKoin
 
-fun MainViewController() = ComposeUIViewController(
-    configure = {
-        initKoin()
-    }
-) {
+fun mainViewController() =
+    ComposeUIViewController(
+        configure = {
+            initKoin()
+        },
+    ) {
 //    MyApplicationTheme {
 //        Surface(
 //            modifier = Modifier.fillMaxSize(),
@@ -15,4 +15,4 @@ fun MainViewController() = ComposeUIViewController(
 //            GreetingView(Greeting().greet())
 //        }
 //    }
-}
+    }

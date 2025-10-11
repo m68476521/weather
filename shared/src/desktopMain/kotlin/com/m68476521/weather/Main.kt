@@ -13,7 +13,7 @@ fun main() {
     application {
         Window(
             onCloseRequest = ::exitApplication,
-            title = "Weather"
+            title = "Weather",
         ) {
             // TODO check this
 //        App()
@@ -30,7 +30,7 @@ fun main() {
 @Composable
 fun Welcome() {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         Greeting()
     }

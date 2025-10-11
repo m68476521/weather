@@ -10,13 +10,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.SerializationException
 
-inline fun <reified T, reified E> HttpClient.safeRequest(
-    crossinline block: HttpRequestBuilder.() -> Unit
-): Flow<Response<T, E>> = flow<Response<T, E>> {
-    emit(Response.Loading)
-    val response = request { block() }
-    emit(Response.Success(response.body<T>()))
-}
+inline fun <reified T, reified E> HttpClient.safeRequest(crossinline block: HttpRequestBuilder.() -> Unit): Flow<Response<T, E>> =
+    flow<Response<T, E>> {
+        emit(Response.Loading)
+        val response = request { block() }
+        emit(Response.Success(response.body<T>()))
+    }
 
 suspend inline fun <reified E> ResponseException.errorBody(): E? =
     try {

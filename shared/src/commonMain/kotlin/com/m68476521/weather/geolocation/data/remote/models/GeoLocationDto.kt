@@ -9,11 +9,11 @@ data class GeoLocationDto(
     @SerialName("generationtime_ms")
     val generationtimeMs: Double = 0.0,
     @SerialName("results")
-    val results: List<Result> = listOf()
+    val results: List<Result> = listOf(),
 )
 
-fun GeoLocationDto.toDomain(): List<GeoLocation> {
-    return results.map {
+fun GeoLocationDto.toDomain(): List<GeoLocation> =
+    results.map {
         GeoLocation(
             id = it.id,
             name = it.name,
@@ -24,7 +24,6 @@ fun GeoLocationDto.toDomain(): List<GeoLocation> {
             longitude = it.longitude,
             timeZone = it.timezone,
             elevation = it.elevation.toDouble(),
-            countryName = it.country
+            countryName = it.country,
         )
     }
-}

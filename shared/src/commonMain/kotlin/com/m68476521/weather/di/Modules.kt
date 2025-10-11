@@ -20,16 +20,18 @@ import org.koin.dsl.module
 
 expect val platformModule: Module
 
-val sharedModule = module {
-    single {
-        get<DatabaseFactory>().create()
-            .setDriver(BundledSQLiteDriver())
-            .build()
+val sharedModule =
+    module {
+        single {
+            get<DatabaseFactory>()
+                .create()
+                .setDriver(BundledSQLiteDriver())
+                .build()
+        }
+        single { get<GeolocationDatabase>().geoLocationDao() }
+        single { HttpClientFactory.create(get()) }
+        single { provideExternalCoroutineScope() }.bind()
+        singleOf(::GeoLocationRemoteApiServiceImpl).bind<GeoLocationRemoteApiService>()
+        singleOf(::GeolocationRepositoryImpl).bind<GeoLocationRepository>()
+        singleOf(::GeoLocationMapper).bind<Mapper<GeoLocation, GeoLocationEntity>>()
     }
-    single { get<GeolocationDatabase>().geoLocationDao() }
-    single { HttpClientFactory.create(get()) }
-    single { provideExternalCoroutineScope() }.bind()
-    singleOf(::GeoLocationRemoteApiServiceImpl).bind<GeoLocationRemoteApiService>()
-    singleOf(::GeolocationRepositoryImpl).bind<GeoLocationRepository>()
-    singleOf(::GeoLocationMapper).bind<Mapper<GeoLocation, GeoLocationEntity>>()
-}
