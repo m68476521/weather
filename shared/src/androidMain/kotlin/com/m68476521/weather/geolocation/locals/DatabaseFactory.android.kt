@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 import com.m68476521.weather.geolocation.data.locals.GeolocationDatabase
 
 actual class DatabaseFactory(
-    private val context: Context
+    private val context: Context,
 ) {
     actual fun create(): RoomDatabase.Builder<GeolocationDatabase> {
         val appContext = context.applicationContext
@@ -14,7 +14,7 @@ actual class DatabaseFactory(
 
         return Room.databaseBuilder(
             context = context,
-            name = dbFile.absolutePath
+            name = dbFile.absolutePath,
         )
     }
 }

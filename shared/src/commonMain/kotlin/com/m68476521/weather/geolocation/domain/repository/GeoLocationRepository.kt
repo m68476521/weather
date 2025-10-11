@@ -7,8 +7,12 @@ import kotlinx.coroutines.flow.Flow
 
 interface GeoLocationRepository {
     val geoLocation: Flow<GeoLocation?>
+
     suspend fun upsertLocation(geoLocation: GeoLocation)
+
     fun fetchGeoLocation(query: String): Flow<Response<List<GeoLocation>, ApiErrorResponse>>
+
     suspend fun clearGeoLocation()
+
     suspend fun clear()
 }

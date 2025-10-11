@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.background,
                 ) {
                     GreetingView(Greeting().greet())
                 }
@@ -28,11 +28,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Suppress("ktlint:standard:function-signature")
 @Composable
 fun GreetingView(text: String) {
     Text(text = text)
 }
 
+@Suppress("ktlint:standard:function-signature")
 @Preview
 @Composable
 fun DefaultPreview() {

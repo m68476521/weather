@@ -1,5 +1,6 @@
 package com.m68476521.weather.geolocation.data.locals
 
+import GeoLocationEntity
 import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase

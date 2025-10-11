@@ -26,32 +26,41 @@ import weather.shared.generated.resources.Res
 import weather.shared.generated.resources.clear_sky
 
 object Util {
-    private val DIRECTIONS = listOf(
-        "North",
-        "North East",
-        "East",
-        "South East",
-        "South",
-        "South West",
-        "West",
-        "North West"
-    )
+    private val DIRECTIONS =
+        listOf(
+            "North",
+            "North East",
+            "East",
+            "South East",
+            "South",
+            "South West",
+            "West",
+            "North West",
+        )
 
     @OptIn(FormatStringsInDatetimeFormats::class)
-    fun formatNormalDate(pattern: String, time: Long): String {
+    fun formatNormalDate(
+        pattern: String,
+        time: Long,
+    ): String {
         val instant = Instant.fromEpochSeconds(time)
         val localDateTime = instant.toLocalDateTime(TimeZone.currentSystemDefault())
-        val formatter = DateTimeFormat.formatAsKotlinBuilderDsl(
-            DateTimeComponents.Format {
-                byUnicodePattern(pattern)
-            }
-        )
+        val formatter =
+            DateTimeFormat.formatAsKotlinBuilderDsl(
+                DateTimeComponents.Format {
+                    byUnicodePattern(pattern)
+                },
+            )
         return formatter
     }
 
-    fun formatUnixToHour(unixTimestamp: Long, timeZone: String = TimeZone.currentSystemDefault().id): String {
+    fun formatUnixToHour(
+        unixTimestamp: Long,
+        timeZone: String = TimeZone.currentSystemDefault().id,
+    ): String {
         val instant = Instant.fromEpochSeconds(unixTimestamp) // Convert Unix timestamp to Instant
-        val localDateTime = instant.toLocalDateTime(TimeZone.of(timeZone)) // Convert to LocalDateTime
+        val localDateTime =
+            instant.toLocalDateTime(TimeZone.of(timeZone)) // Convert to LocalDateTime
 
         // Extract hour and minute, and format them
         val hour = localDateTime.hour.toString().padStart(2, '0') // Ensure two digits
@@ -59,33 +68,43 @@ object Util {
         return "$hour:$minute" // Combine into HH:mm format
     }
 
-    fun formatUnixToDay(unixTimestamp: Long, timeZone: String = TimeZone.currentSystemDefault().id): String {
+    fun formatUnixToDay(
+        unixTimestamp: Long,
+        timeZone: String = TimeZone.currentSystemDefault().id,
+    ): String {
         val instant = Instant.fromEpochSeconds(unixTimestamp) // Convert Unix timestamp to Instant
-        val localDateTime = instant.toLocalDateTime(TimeZone.of(timeZone)) // Convert to LocalDateTime
-        return localDateTime.dayOfWeek.name.lowercase().replaceFirstChar { it.uppercase() } // E.g., "Monday"
+        val localDateTime =
+            instant.toLocalDateTime(TimeZone.of(timeZone)) // Convert to LocalDateTime
+        return localDateTime.dayOfWeek.name
+            .lowercase()
+            .replaceFirstChar { it.uppercase() } // E.g., "Monday"
     }
 
-    fun formatUnixToCustom(unixTimestamp: Long, timeZone: String = TimeZone.currentSystemDefault().id): String {
+    fun formatUnixToCustom(
+        unixTimestamp: Long,
+        timeZone: String = TimeZone.currentSystemDefault().id,
+    ): String {
         val instant = Instant.fromEpochSeconds(unixTimestamp)
         val localDateTime = instant.toLocalDateTime(TimeZone.of(timeZone))
 
         // Example custom format: "MMM, d" (e.g., "Nov, 29")
-        val month = localDateTime.month.name.lowercase().replaceFirstChar { it.uppercase() } // "November"
+        val month =
+            localDateTime.month.name
+                .lowercase()
+                .replaceFirstChar { it.uppercase() } // "November"
         val day = localDateTime.dayOfMonth
         return "$month, $day"
     }
 
-    fun getWindDirection(windDirection: Double): String {
-        return DIRECTIONS[(windDirection % 360 / 45 % 8).toInt()]
-    }
+    fun getWindDirection(windDirection: Double): String = DIRECTIONS[(windDirection % 360 / 45 % 8).toInt()]
 
     fun isTodayDate(day: String): Boolean {
         val todayDate = formatUnixToDay(Clock.System.now().toEpochMilliseconds())
         return todayDate.lowercase() == day.lowercase()
     }
 
-    fun getWeatherInfo(code: Int): WeatherInfoItem {
-        return when (code) {
+    fun getWeatherInfo(code: Int): WeatherInfoItem =
+        when (code) {
             0 -> WeatherInfoItem("Clear sky", Res.drawable.clear_sky)
 // //            1 -> WeatherInfoItem("Mainly clear", Res.drawable.mainly_clear)
 // //            2 -> WeatherInfoItem("partly cloudy", Res.drawable.mainly_clear)
@@ -110,10 +129,9 @@ object Util {
 // //            95, 96, 99 -> WeatherInfoItem("Thunderstorm: Slight", Res.drawable.thunder_storm)
             else -> WeatherInfoItem("Unknown", Res.drawable.clear_sky)
         }
-    }
 }
 
 data class WeatherInfoItem(
     val info: String,
-    val icon: DrawableResource
+    val icon: DrawableResource,
 )

@@ -14,14 +14,15 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 object HttpClientFactory {
-    fun create(engine: HttpClientEngine): HttpClient {
-        return HttpClient(engine) {
+    fun create(engine: HttpClientEngine): HttpClient =
+        HttpClient(engine) {
             install(ContentNegotiation) {
                 json(
-                    json = Json {
-                        ignoreUnknownKeys = true
-                        coerceInputValues = true
-                    }
+                    json =
+                        Json {
+                            ignoreUnknownKeys = true
+                            coerceInputValues = true
+                        },
                 )
             }
 
@@ -31,11 +32,12 @@ object HttpClientFactory {
             }
 
             install(Logging) {
-                logger = object : Logger {
-                    override fun log(message: String) {
-                        println(message)
+                logger =
+                    object : Logger {
+                        override fun log(message: String) {
+                            println(message)
+                        }
                     }
-                }
                 level = LogLevel.ALL
             }
 
@@ -43,5 +45,4 @@ object HttpClientFactory {
                 contentType(ContentType.Application.Json)
             }
         }
-    }
 }

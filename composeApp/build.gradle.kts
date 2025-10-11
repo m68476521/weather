@@ -1,3 +1,6 @@
+import org.gradle.kotlin.dsl.ktlint
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)

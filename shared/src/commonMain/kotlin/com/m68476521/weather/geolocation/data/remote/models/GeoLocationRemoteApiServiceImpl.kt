@@ -12,12 +12,11 @@ import kotlinx.coroutines.flow.Flow
 import org.hoods.forecastly.utils.K
 
 class GeoLocationRemoteApiServiceImpl(
-    private val httpClient: HttpClient
+    private val httpClient: HttpClient,
 ) : GeoLocationRemoteApiService {
-    override fun searchLocation(query: String): Flow<Response<GeoLocationDto, ApiErrorResponse>> {
-        return httpClient.safeRequest<GeoLocationDto, ApiErrorResponse> {
+    override fun searchLocation(query: String): Flow<Response<GeoLocationDto, ApiErrorResponse>> =
+        httpClient.safeRequest<GeoLocationDto, ApiErrorResponse> {
             url(urlString = K.GEO_CODING_BASE_URL + "/${K.GEO_CODING_END_POINT}")
             parameter("name", query)
         }
-    }
 }
