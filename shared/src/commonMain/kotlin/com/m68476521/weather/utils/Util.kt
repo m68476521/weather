@@ -13,7 +13,6 @@ package org.hoods.forecastly.utils
 // import forecastly.composeapp.generated.resources.snow_fall
 // import forecastly.composeapp.generated.resources.snow_fall_slight
 // import forecastly.composeapp.generated.resources.thunder_storm
-import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format.DateTimeComponents
@@ -24,6 +23,8 @@ import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.DrawableResource
 import weather.shared.generated.resources.Res
 import weather.shared.generated.resources.clear_sky
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 object Util {
     private val DIRECTIONS =
@@ -38,7 +39,7 @@ object Util {
             "North West",
         )
 
-    @OptIn(FormatStringsInDatetimeFormats::class)
+    @OptIn(FormatStringsInDatetimeFormats::class, ExperimentalTime::class)
     fun formatNormalDate(
         pattern: String,
         time: Long,
@@ -54,6 +55,7 @@ object Util {
         return formatter
     }
 
+    @OptIn(ExperimentalTime::class)
     fun formatUnixToHour(
         unixTimestamp: Long,
         timeZone: String = TimeZone.currentSystemDefault().id,
@@ -68,6 +70,7 @@ object Util {
         return "$hour:$minute" // Combine into HH:mm format
     }
 
+    @OptIn(ExperimentalTime::class)
     fun formatUnixToDay(
         unixTimestamp: Long,
         timeZone: String = TimeZone.currentSystemDefault().id,
@@ -80,6 +83,7 @@ object Util {
             .replaceFirstChar { it.uppercase() } // E.g., "Monday"
     }
 
+    @OptIn(ExperimentalTime::class)
     fun formatUnixToCustom(
         unixTimestamp: Long,
         timeZone: String = TimeZone.currentSystemDefault().id,
@@ -98,6 +102,7 @@ object Util {
 
     fun getWindDirection(windDirection: Double): String = DIRECTIONS[(windDirection % 360 / 45 % 8).toInt()]
 
+    @OptIn(ExperimentalTime::class)
     fun isTodayDate(day: String): Boolean {
         val todayDate = formatUnixToDay(Clock.System.now().toEpochMilliseconds())
         return todayDate.lowercase() == day.lowercase()

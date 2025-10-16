@@ -23,7 +23,7 @@ fun GeoLocationDto.toDomain(): List<GeoLocation> =
             latitude = it.latitude,
             longitude = it.longitude,
             timeZone = it.timezone,
-            elevation = it.elevation.toDouble(),
+            elevation = it.elevation,
             countryName = it.country,
         )
     }

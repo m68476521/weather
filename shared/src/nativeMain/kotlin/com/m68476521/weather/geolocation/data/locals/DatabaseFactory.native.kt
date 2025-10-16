@@ -1,8 +1,7 @@
-package com.m68476521.weather.geolocation.locals
+package com.m68476521.weather.geolocation.data.locals
 
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.m68476521.weather.geolocation.data.locals.GeolocationDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager

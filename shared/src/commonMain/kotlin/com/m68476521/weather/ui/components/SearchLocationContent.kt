@@ -88,10 +88,10 @@ fun SearchLocationContent(
                 }
             },
             expanded = expanded,
-            onExpandedChange = {
-                expanded = it
-            },
-        ) {
+            onExpandedChange = { expanded = it },
+        )
+
+         {
             Card {
                 Column(modifier.fillMaxWidth()) {
                     AnimatedVisibility(state.error != null) {

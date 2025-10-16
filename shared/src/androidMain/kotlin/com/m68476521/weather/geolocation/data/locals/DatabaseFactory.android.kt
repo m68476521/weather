@@ -1,9 +1,8 @@
-package com.m68476521.weather.geolocation.locals
+package com.m68476521.weather.geolocation.data.locals
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.m68476521.weather.geolocation.data.locals.GeolocationDatabase
 
 actual class DatabaseFactory(
     private val context: Context,

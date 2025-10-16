@@ -1,13 +1,12 @@
 package com.m68476521.weather
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.m68476521.weather.di.initKoin
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 fun main() {
     initKoin()
     application {
@@ -15,23 +14,8 @@ fun main() {
             onCloseRequest = ::exitApplication,
             title = "Weather",
         ) {
-            // TODO check this
-//        App()
-// getPlatform()
-//        Greeting()
-//        Box(modifier = Modifier.fillMaxSize()) {
-//            Greeting()
-//        }
-            Welcome()
+            val calculatorScreenSize = calculateWindowSizeClass()
+            App(calculatorScreenSize.widthSizeClass)
         }
-    }
-}
-
-@Composable
-fun Welcome() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        Greeting()
     }
 }

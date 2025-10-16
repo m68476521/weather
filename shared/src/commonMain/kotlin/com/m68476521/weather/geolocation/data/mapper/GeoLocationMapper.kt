@@ -18,7 +18,7 @@ class GeoLocationMapper : Mapper<GeoLocation, GeoLocationEntity> {
                 longitude = longitude,
                 timeZone = timeZone,
                 elevation = elevation,
-                flagUrl = K.flagUrl(countryCode),
+                flagUrl = K.flagUrl(countryCode ?: ""),
             )
         }
 

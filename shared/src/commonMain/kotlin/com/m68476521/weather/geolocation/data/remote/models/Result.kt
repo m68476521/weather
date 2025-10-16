@@ -27,9 +27,9 @@ data class Result(
     @SerialName("country_id")
     val countryId: Int = 0,
     @SerialName("elevation")
-    val elevation: Int = 0,
+    val elevation: Double? = null,
     @SerialName("feature_code")
-    val featureCode: String = "",
+    val featureCode: String? = null,
     @SerialName("id")
     val id: Int = 0,
     @SerialName("latitude")

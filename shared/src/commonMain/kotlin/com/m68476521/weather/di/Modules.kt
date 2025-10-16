@@ -12,9 +12,11 @@ import com.m68476521.weather.geolocation.data.remote.models.GeoLocationRemoteApi
 import com.m68476521.weather.geolocation.data.repository.GeolocationRepositoryImpl
 import com.m68476521.weather.geolocation.domain.models.GeoLocation
 import com.m68476521.weather.geolocation.domain.repository.GeoLocationRepository
+import com.m68476521.weather.ui.home.HomeViewModel
 import com.m68476521.weather.utils.provideExternalCoroutineScope
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -34,4 +36,6 @@ val sharedModule =
         singleOf(::GeoLocationRemoteApiServiceImpl).bind<GeoLocationRemoteApiService>()
         singleOf(::GeolocationRepositoryImpl).bind<GeoLocationRepository>()
         singleOf(::GeoLocationMapper).bind<Mapper<GeoLocation, GeoLocationEntity>>()
+
+        viewModelOf(::HomeViewModel)
     }

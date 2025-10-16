@@ -1,6 +1,6 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -18,7 +18,7 @@ kotlin {
         compilations.all {
             compileTaskProvider.configure {
                 compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_1_8)
+                    jvmTarget.set(JvmTarget.JVM_11)
                 }
             }
         }
@@ -46,6 +46,7 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.androidx.material3.icons)
         }
 
         commonMain.dependencies {
@@ -104,23 +105,22 @@ dependencies {
 
 android {
     namespace = "com.m68476521.weather"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         minSdk = 24
     }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
+
+    tasks.withType<KotlinJvmCompile>().configureEach {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+            freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    implementation(libs.androidx.material3.icons)
 }
 
 compose.desktop {
@@ -132,5 +132,12 @@ compose.desktop {
             packageName = "com.m68476521.weather"
             packageVersion = "1.0.0"
         }
+    }
+}
+
+// TODO check this on making the app crash if remove it
+configurations.all {
+    resolutionStrategy {
+        force("androidx.compose.material3:material3:1.4.0")
     }
 }
