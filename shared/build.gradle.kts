@@ -46,7 +46,6 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
-            implementation(libs.androidx.material3.icons)
         }
 
         commonMain.dependencies {
@@ -70,10 +69,12 @@ kotlin {
             implementation(libs.sqlite.bundled)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-            api(libs.koin.core)
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+
+            api(libs.koin.core)
+            api(libs.androidx.material3.icons)
         }
         commonTest.dependencies {
 
@@ -120,7 +121,6 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
-    implementation(libs.androidx.material3.icons)
 }
 
 compose.desktop {
@@ -135,7 +135,7 @@ compose.desktop {
     }
 }
 
-// TODO check this on making the app crash if remove it
+//// TODO check this on making the app crash if remove it
 configurations.all {
     resolutionStrategy {
         force("androidx.compose.material3:material3:1.4.0")

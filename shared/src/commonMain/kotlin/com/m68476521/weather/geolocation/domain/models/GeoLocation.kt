@@ -7,7 +7,7 @@ import org.hoods.forecastly.utils.FlagUrl
 @Serializable
 data class GeoLocation(
     val id: Int = 0,
-    val name: String ? = null,
+    val name: String? = null,
     val countryName: String? = null,
     @SerialName("country_code")
     val countryCode: String? = null,
@@ -20,6 +20,6 @@ data class GeoLocation(
     val elevation: Double? = null,
     @SerialName("feature_code")
     val featureCode: String? = null,
-    val population : String? = null,
-    val country : String? = null,
+    val population: String? = null,
+    val country: String? = null,
 )

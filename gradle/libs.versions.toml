@@ -30,7 +30,7 @@ appcompat = "1.7.1"
 material = "1.13.0"
 ktlint-version = "13.1.0"
 material3WindowSizeClass = "1.4.0"
-material3-icons = "1.7.7"
+material3-icons = "1.7.3"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -82,7 +82,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-material3-window-size-class1 = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "material3WindowSizeClass" }
-androidx-material3-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "material3-icons" }
+androidx-material3-icons = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "material3-icons" }
 
 
 [plugins]
