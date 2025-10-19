@@ -110,7 +110,7 @@ fun SearchLocationContent(
 
                             Row(
                                 modifier =
-                                    Modifier
+                                    Modifier.fillMaxWidth()
                                         .padding(16.dp)
                                         .background(
                                             color =
@@ -123,7 +123,7 @@ fun SearchLocationContent(
                                 horizontalArrangement = Arrangement.SpaceBetween,
                             ) {
                                 Row(
-                                    horizontalArrangement = Arrangement.Center,
+                                    horizontalArrangement = Arrangement.Start,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier.weight(1f),
                                 ) {
