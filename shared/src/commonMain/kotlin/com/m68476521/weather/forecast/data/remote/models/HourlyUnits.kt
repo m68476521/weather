@@ -1,5 +1,4 @@
-package com.m68476521.weather.forecast.remote.models
-
+package com.m68476521.weather.forecast.data.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -11,5 +10,5 @@ data class HourlyUnits(
     @SerialName("time")
     val time: String = "",
     @SerialName("weather_code")
-    val weatherCode: String = ""
+    val weatherCode: String = "",
 )

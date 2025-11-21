@@ -1,5 +1,4 @@
-package com.m68476521.weather.forecast.remote.models
-
+package com.m68476521.weather.forecast.data.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -19,5 +18,5 @@ data class CurrentUnits(
     @SerialName("wind_direction_10m")
     val windDirection10m: String = "",
     @SerialName("wind_speed_10m")
-    val windSpeed10m: String = ""
+    val windSpeed10m: String = "",
 )

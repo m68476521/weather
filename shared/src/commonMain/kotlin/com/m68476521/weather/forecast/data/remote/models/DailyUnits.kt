@@ -1,5 +1,4 @@
-package com.m68476521.weather.forecast.remote.models
-
+package com.m68476521.weather.forecast.data.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -19,5 +18,5 @@ data class DailyUnits(
     @SerialName("uv_index_max")
     val uvIndexMax: String = "",
     @SerialName("weather_code")
-    val weatherCode: String = ""
+    val weatherCode: String = "",
 )

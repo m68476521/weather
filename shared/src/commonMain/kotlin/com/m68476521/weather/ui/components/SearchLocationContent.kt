@@ -110,7 +110,8 @@ fun SearchLocationContent(
 
                             Row(
                                 modifier =
-                                    Modifier.fillMaxWidth()
+                                    Modifier
+                                        .fillMaxWidth()
                                         .padding(16.dp)
                                         .background(
                                             color =

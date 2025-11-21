@@ -1,17 +1,16 @@
-package com.m68476521.weather.forecast.remote.models
-
+package com.m68476521.weather.forecast.data.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class WeatherDao(
+data class WeatherDto(
     @SerialName("current")
-    val currentDto: CurrentDto = CurrentDto(),
+    val current: CurrentDto = CurrentDto(),
     @SerialName("current_units")
     val currentUnits: CurrentUnits = CurrentUnits(),
     @SerialName("daily")
-    val dailyDto: DailyDto = DailyDto(),
+    val daily: DailyDto = DailyDto(),
     @SerialName("daily_units")
     val dailyUnits: DailyUnits = DailyUnits(),
     @SerialName("elevation")
@@ -19,7 +18,7 @@ data class WeatherDao(
     @SerialName("generationtime_ms")
     val generationTimeMs: Double = 0.0,
     @SerialName("hourly")
-    val hourlyDto: HourlyDto = HourlyDto(),
+    val hourly: HourlyDto = HourlyDto(),
     @SerialName("hourly_units")
     val hourlyUnits: HourlyUnits = HourlyUnits(),
     @SerialName("latitude")
@@ -31,5 +30,5 @@ data class WeatherDao(
     @SerialName("timezone_abbreviation")
     val timezoneAbbreviation: String = "",
     @SerialName("utc_offset_seconds")
-    val utcOffsetSeconds: Int = 0
+    val utcOffsetSeconds: Int = 0,
 )
