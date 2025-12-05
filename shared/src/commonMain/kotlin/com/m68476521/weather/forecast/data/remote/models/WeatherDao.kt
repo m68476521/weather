@@ -14,7 +14,7 @@ data class WeatherDto(
     @SerialName("daily_units")
     val dailyUnits: DailyUnits = DailyUnits(),
     @SerialName("elevation")
-    val elevation: Int = 0,
+    val elevation: Double? = 0.0,
     @SerialName("generationtime_ms")
     val generationTimeMs: Double = 0.0,
     @SerialName("hourly")

@@ -71,9 +71,14 @@ object Util {
         unixTimestamp: Long,
         timeZone: String = TimeZone.currentSystemDefault().id,
     ): String {
+        val timeZoneFinal =
+            timeZone.ifBlank {
+                TimeZone.currentSystemDefault().id
+            }
+
         val instant = Instant.fromEpochSeconds(unixTimestamp) // Convert Unix timestamp to Instant
         val localDateTime =
-            instant.toLocalDateTime(TimeZone.of(timeZone)) // Convert to LocalDateTime
+            instant.toLocalDateTime(TimeZone.of(timeZoneFinal)) // Convert to LocalDateTime
 
         // Extract hour and minute, and format them
         val hour = localDateTime.hour.toString().padStart(2, '0') // Ensure two digits
@@ -87,8 +92,14 @@ object Util {
         timeZone: String = TimeZone.currentSystemDefault().id,
     ): String {
         val instant = Instant.fromEpochSeconds(unixTimestamp) // Convert Unix timestamp to Instant
+
+        val timeZoneFinal =
+            timeZone.ifBlank {
+                TimeZone.currentSystemDefault().id
+            }
+
         val localDateTime =
-            instant.toLocalDateTime(TimeZone.of(timeZone)) // Convert to LocalDateTime
+            instant.toLocalDateTime(TimeZone.of(timeZoneFinal)) // Convert to LocalDateTime
         return localDateTime.dayOfWeek.name
             .lowercase()
             .replaceFirstChar { it.uppercase() } // E.g., "Monday"
@@ -100,7 +111,12 @@ object Util {
         timeZone: String = TimeZone.currentSystemDefault().id,
     ): String {
         val instant = Instant.fromEpochSeconds(unixTimestamp)
-        val localDateTime = instant.toLocalDateTime(TimeZone.of(timeZone))
+        val timeZoneFinal =
+            timeZone.ifBlank {
+                TimeZone.currentSystemDefault().id
+            }
+
+        val localDateTime = instant.toLocalDateTime(TimeZone.of(timeZoneFinal))
 
         // Example custom format: "MMM, d" (e.g., "Nov, 29")
         val month =

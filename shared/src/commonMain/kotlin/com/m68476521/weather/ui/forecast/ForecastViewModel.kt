@@ -100,7 +100,7 @@ class ForecastViewModel(
                     // TODO check why this is nullable
                     latitude = geoLocation.latitude?.toFloat() ?: 0.toFloat(),
                     longitude = geoLocation.longitude?.toFloat() ?: 0.toFloat(),
-                    timeZone = geoLocation.timeZone ?: "",
+                    timeZone = geoLocation.timeZone ?: "America/Los_Angeles",
                 )
             }
         }

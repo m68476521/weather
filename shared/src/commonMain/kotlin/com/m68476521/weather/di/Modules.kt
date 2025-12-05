@@ -29,6 +29,7 @@ import com.m68476521.weather.geolocation.data.remote.models.GeoLocationRemoteApi
 import com.m68476521.weather.geolocation.data.repository.GeolocationRepositoryImpl
 import com.m68476521.weather.geolocation.domain.models.GeoLocation
 import com.m68476521.weather.geolocation.domain.repository.GeoLocationRepository
+import com.m68476521.weather.ui.forecast.ForecastViewModel
 import com.m68476521.weather.ui.home.HomeViewModel
 import com.m68476521.weather.utils.provideExternalCoroutineScope
 import org.koin.core.module.Module
@@ -62,4 +63,5 @@ val sharedModule =
         singleOf(::ForecastRepositoryImpl).bind<ForecastRepository>()
 
         viewModelOf(::HomeViewModel)
+        viewModelOf(::ForecastViewModel)
     }

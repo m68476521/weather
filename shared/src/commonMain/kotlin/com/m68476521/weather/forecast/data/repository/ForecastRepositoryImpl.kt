@@ -37,7 +37,7 @@ class ForecastRepositoryImpl(
                 timeZone = timeZone,
             ).map { response ->
                 response.map {
-                    mapper.mapToDomain(it)
+                    mapper.mapToDomain(it, timeZone = timeZone)
                 }
             }.onEach { result ->
                 _weatherData.update {
