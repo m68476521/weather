@@ -68,8 +68,8 @@ private fun ForecastNavContent(
         ) {
             if (navigationType == NavigationType.BOTTOM_NAVIGATION) {
                 when (currentTab) {
-                    0 -> HomeScreen(navigationType = navigationType)
-                    1 -> DailyScreen()
+                    0 -> HomeScreen(navigationType = navigationType, modifier = Modifier.weight(1f))
+                    1 -> DailyScreen(modifier = Modifier.weight(1f))
                 }
             } else {
                 Row {
