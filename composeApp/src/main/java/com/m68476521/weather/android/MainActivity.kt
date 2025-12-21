@@ -3,6 +3,7 @@ package com.m68476521.weather.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -16,7 +17,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val calculateWindowSizes = calculateWindowSizeClass(this)
-            App(calculateWindowSizes.widthSizeClass)
+            App(
+                calculateWindowSizes.widthSizeClass,
+                dynamicColor = true,
+                darkTheme = isSystemInDarkTheme(),
+            )
         }
     }
 }
@@ -27,5 +32,7 @@ class MainActivity : ComponentActivity() {
 fun DefaultPreview() {
     App(
         WindowWidthSizeClass.Medium,
+        dynamicColor = true,
+        darkTheme = isSystemInDarkTheme(),
     )
 }

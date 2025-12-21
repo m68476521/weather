@@ -27,7 +27,10 @@ fun HomeScreen(
     val context = LocalPlatformContext.current
     var showSearchLocation by rememberSaveable { mutableStateOf(false) }
 
-    AnimatedVisibility(showSearchLocation, modifier = modifier) {
+    AnimatedVisibility(
+        visible = showSearchLocation || !state.isLocationSelected,
+        modifier = modifier,
+    ) {
         SearchLocationContent(
             modifier = modifier,
             navigationType = navigationType,
@@ -50,7 +53,7 @@ fun HomeScreen(
         )
     }
 
-    AnimatedVisibility(!showSearchLocation, modifier = modifier) {
+    AnimatedVisibility(visible = !showSearchLocation, modifier = modifier) {
         if (state.isLocationSelected) {
             ForecastScreen(
                 modifier = modifier,
