@@ -10,6 +10,7 @@ fun mainViewController() =
     ComposeUIViewController(
         configure = {
             initKoin()
+            enforceStrictPlistSanityCheck = false
         },
     ) {
         val calculateScreenSize = calculateWindowSizeClass()
